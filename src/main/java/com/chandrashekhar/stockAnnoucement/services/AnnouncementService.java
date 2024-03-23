@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 public class AnnouncementService {
     String url = "https://www.bseindia.com/corporates/ann.html";
 
-    public void scrapAnnouncements(String url){
+    public String scrapAnnouncements(){
         try{
             Document document = Jsoup.connect(url).get();
+            return document.title();
         }
         catch (IOException e){
-            System.out.println("error message is: "+ e);
+            return ("error message is: "+ e);
         }
     }   
     
